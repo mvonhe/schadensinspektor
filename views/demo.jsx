@@ -403,17 +403,12 @@ export default React.createClass({
           </div>
         </div>
 
-        <h2 className="base--h2">Transcribe Audio</h2>
+        <h2 className="base--h2">Schadensinspektor</h2>
 
         <ul className="base--ul">
           {micBullet}
           <li className="base--li">{'Upload pre-recorded audio (.mp3, .mpeg, .wav, .flac, or .opus only).'}</li>
-          <li className="base--li">Play one of the sample audio files.*</li>
         </ul>
-
-        <div className="smalltext">
-          {'*Both US English broadband sample audio files are covered under the Creative Commons license.'}
-        </div>
 
         <div style={{
           paddingRight: '3em',
@@ -478,13 +473,7 @@ export default React.createClass({
             <Icon type={this.state.audioSource === 'upload' ? 'stop' : 'upload'} /> Upload Audio File
           </button>
 
-          <button className={buttonClass} onClick={this.handleSample1Click}>
-            <Icon type={this.state.audioSource === 'sample-1' ? 'stop' : 'play'} /> Play Sample 1
-          </button>
 
-          <button className={buttonClass} onClick={this.handleSample2Click}>
-            <Icon type={this.state.audioSource === 'sample-2' ? 'stop' : 'play'} /> Play Sample 2
-          </button>
 
         </div>
 

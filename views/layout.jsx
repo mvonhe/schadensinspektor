@@ -25,16 +25,7 @@ export default function Layout(props) {
           subBreadcrumbsUrl="https://speech-to-text-demo.mybluemix.net"
 
         />
-        <Jumbotron
-          serviceName="Speech to Text"
-          repository="https://github.com/watson-developer-cloud/speech-to-text-nodejs"
-          documentation="https://console.bluemix.net/docs/services/speech-to-text/getting-started.html"
-          apiReference="http://www.ibm.com/watson/developercloud/speech-to-text/api"
-          version="GA"
-          serviceIcon="/images/stt.svg"
-          startInBluemix="https://console.bluemix.net/registration/?target=/catalog/services/speech-to-text/"
-          description={DESCRIPTION}
-        />
+
         <div id="root">
           {props.children}
         </div>

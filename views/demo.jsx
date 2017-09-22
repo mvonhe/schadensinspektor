@@ -359,6 +359,7 @@ export default React.createClass({
       : 'base--button base--button_black';
 
     let micIconFill = '#000000';
+    let micIconOutline = '#000000';
     let micButtonClass = buttonClass;
     if (this.state.audioSource === 'mic') {
       micButtonClass += ' mic-active';
@@ -377,8 +378,8 @@ export default React.createClass({
 
     const messages = this.getFinalAndLatestInterimResult();
     const micBullet = (typeof window !== 'undefined' && recognizeMicrophone.isSupported) ?
-      <span className="base--li">Use your microphone to dictate the cause of loss.</span> :
-      <span className="base--li base--p_light">Use your microphone to record audio. (Not supported in current browser)</span>;// eslint-disable-line
+      <span >Use your microphone to dictate the cause of loss.</span> :
+      <span >Use your microphone to record audio. (Not supported in current browser)</span>;// eslint-disable-line
 
     return (
 
@@ -405,16 +406,9 @@ export default React.createClass({
 
         <h2 className="base--h2">Schadensinspektor</h2>
 
-        <span>
+        <div>
+          <br/>
           {micBullet}
-        </span>
-
-
-        <div style={{
-          paddingRight: '3em',
-          paddingBottom: '2em',
-        }}
-        >
 
         </div>
 
@@ -430,17 +424,7 @@ export default React.createClass({
               />
             </p>
 
-            <p className={this.supportsSpeakerLabels() ? 'base--p' : 'base--p_light'}>
-              <input
-                className="base--checkbox"
-                type="checkbox"
-                checked={this.state.speakerLabels}
-                onChange={this.handleSpeakerLabelsChange}
-                disabled={!this.supportsSpeakerLabels()}
-                id="speaker-labels"
-              />
 
-            </p>
 
           </div>
           <div className="column">
@@ -455,13 +439,27 @@ export default React.createClass({
             /></p>
 
           </div>
+
         </div>
 
+        <p className={this.supportsSpeakerLabels() ? 'base--p' : 'base--p_light'}>
+          <input
+            className="base--checkbox"
+            type="checkbox"
+            checked={this.state.speakerLabels}
+            onChange={this.handleSpeakerLabelsChange}
+            disabled={!this.supportsSpeakerLabels()}
+            id="speaker-labels"
+          />
+          <label className="base--inline-label" htmlFor="speaker-labels">
+            Detect multiple speakers {this.supportsSpeakerLabels() ? '' : ' (Not supported on current model)'}
+          </label>
 
+        </p>
         <div className="flex buttons">
 
-          <button className={micButtonClass} onClick={this.handleMicClick}>
-            <Icon type={this.state.audioSource === 'mic' ? 'stop' : 'microphone'} fill={micIconFill} /> Record Audio
+          <button className={micButtonClass}  onClick={this.handleMicClick}>
+            <Icon type={this.state.audioSource === 'mic' ? 'stop' : 'microphone'} fill={micIconFill}  /> Record Audio
           </button>
 
 

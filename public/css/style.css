@@ -28,7 +28,9 @@ dialog, dd, dt {
     padding: 0;
 }
 
-
+button {
+  background-color: #9855d4;
+}
 
 
 /* drag-drop styles */

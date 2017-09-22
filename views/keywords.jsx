@@ -62,8 +62,9 @@ Keywords.propTypes = {
   isInProgress: PropTypes.bool.isRequired,
 };
 
-export function getKeywordsSummary(keywords, messages) {
-  const spotted = Object.keys(getSpotted(messages)).length;
-  const total = keywords.length;
-  return `(${spotted}/${total})`;
-}
+  export function getKeywordsSummary(keywords, messages) {
+    const spotted = Object.keys(getSpotted(messages)).length;
+    const total = keywords.length;
+
+    return `Keywords (${spotted}/${total})`;
+  }

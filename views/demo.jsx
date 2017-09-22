@@ -377,8 +377,8 @@ export default React.createClass({
 
     const messages = this.getFinalAndLatestInterimResult();
     const micBullet = (typeof window !== 'undefined' && recognizeMicrophone.isSupported) ?
-      <li className="base--li">Use your microphone to record audio.</li> :
-      <li className="base--li base--p_light">Use your microphone to record audio. (Not supported in current browser)</li>;// eslint-disable-line
+      <span className="base--li">Use your microphone to dictate the cause of loss.</span> :
+      <span className="base--li base--p_light">Use your microphone to record audio. (Not supported in current browser)</span>;// eslint-disable-line
 
     return (
 
@@ -405,20 +405,17 @@ export default React.createClass({
 
         <h2 className="base--h2">Schadensinspektor</h2>
 
-        <ul className="base--ul">
+        <span>
           {micBullet}
-          <li className="base--li">{'Upload pre-recorded audio (.mp3, .mpeg, .wav, .flac, or .opus only).'}</li>
-        </ul>
+        </span>
+
 
         <div style={{
           paddingRight: '3em',
           paddingBottom: '2em',
         }}
         >
-          The returned result includes the recognized text, {' '}
-          <a className="base--a" href="https://console.bluemix.net/docs/services/speech-to-text/output.html#output">word alternatives</a>, {' '}
-          and <a className="base--a" href="https://console.bluemix.net/docs/services/speech-to-text/output.html#output">spotted keywords</a>. {' '}
-          Some models can <a className="base--a" href="https://console.bluemix.net/docs/services/speech-to-text/output.html#output">detect multiple speakers</a>; this may slow down performance.
+
         </div>
 
 
@@ -442,9 +439,7 @@ export default React.createClass({
                 disabled={!this.supportsSpeakerLabels()}
                 id="speaker-labels"
               />
-              <label className="base--inline-label" htmlFor="speaker-labels">
-                Detect multiple speakers {this.supportsSpeakerLabels() ? '' : ' (Not supported on current model)'}
-              </label>
+
             </p>
 
           </div>
@@ -469,10 +464,6 @@ export default React.createClass({
             <Icon type={this.state.audioSource === 'mic' ? 'stop' : 'microphone'} fill={micIconFill} /> Record Audio
           </button>
 
-          <button className={buttonClass} onClick={this.handleUploadClick}>
-            <Icon type={this.state.audioSource === 'upload' ? 'stop' : 'upload'} /> Upload Audio File
-          </button>
-
 
 
         </div>
@@ -488,7 +479,7 @@ export default React.createClass({
           <Pane label="Word Timings and Alternatives">
             <TimingView messages={messages} />
           </Pane>
-          <Pane label={`Keywords ${getKeywordsSummary(this.state.settingsAtStreamStart.keywords, messages)}`}>
+          <Pane label={` ${getKeywordsSummary(this.state.settingsAtStreamStart.keywords, messages)}`}>
             <Keywords
               messages={messages}
               keywords={this.state.settingsAtStreamStart.keywords}

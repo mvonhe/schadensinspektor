@@ -9,4 +9,4 @@ applications:
   command: npm start
   memory: 512M
   services:
-  - my-stt-service
+  - schadensinspektor_stt
